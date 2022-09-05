@@ -16,8 +16,8 @@ resource "aws_lambda_function" "execute_emr" {
       JOB_FLOW_ROLE   = "EMR_EC2_DefaultRole"
       SERVICE_ROLE    = "EMR_DefaultRole"
       CLUSTER_NAME    = "${var.base_cluster_name}-${var.enviroment}-${var.region}-${var.account_name}"
-      DATA_INSERT_KEY = aws_s3_object.delta_insert.key
-      DATA_UPSERT_KEY = aws_s3_object.delta_upsert.key
+      DATA_INSERT_KEY = aws_s3_object.delta_insert.id
+      DATA_UPSERT_KEY = aws_s3_object.delta_upsert.id
     }
   }
 
