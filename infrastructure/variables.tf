@@ -1,12 +1,20 @@
 variable "base_bucket_name" {
-  default = "datalake-igti-tf"
+  default = "datalake"
 }
 
-variable "ambiente" {
-  default = "producao"
+variable "base_lambda_name" {
+  default = "execute-emr"
 }
 
-variable "numero_conta" {
+variable "enviroment" {
+  default = "dev"
+}
+
+variable "base_cluster_name" {
+  default = "emr-delta"
+}
+
+variable "account_name" {
   default = "263705825298"
 }
 

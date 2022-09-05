@@ -1,3 +1,6 @@
 *.csv
 env/
 .python-version
+.terraform
+.terraform.lock.hcl
+lambda_function_payload.zip
