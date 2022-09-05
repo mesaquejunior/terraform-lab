@@ -1,5 +1,13 @@
 autopep8==1.7.0
+boto3==1.24.66
+botocore==1.27.66
+delta==0.4.2
+jmespath==1.0.1
 py4j==0.10.9.5
 pycodestyle==2.9.1
 pyspark==3.3.0
+python-dateutil==2.8.2
+s3transfer==0.6.0
+six==1.16.0
 toml==0.10.2
+urllib3==1.26.12
