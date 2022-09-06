@@ -1,7 +1,7 @@
 resource "aws_lambda_function" "execute_emr" {
   filename      = "lambda_function_payload.zip"
   function_name = "${var.base_lambda_name}-${var.enviroment}-${var.region}-${var.account_name}"
-  role          = aws_iam_policy.lambda.arn
+  role          = aws_iam_role.lambda.arn
   handler       = "lambda_function.handler"
   memory_size   = 128
   timeout       = 30
@@ -16,8 +16,8 @@ resource "aws_lambda_function" "execute_emr" {
       JOB_FLOW_ROLE   = "EMR_EC2_DefaultRole"
       SERVICE_ROLE    = "EMR_DefaultRole"
       CLUSTER_NAME    = "${var.base_cluster_name}-${var.enviroment}-${var.region}-${var.account_name}"
-      DATA_INSERT_KEY = aws_s3_object.delta_insert.id
-      DATA_UPSERT_KEY = aws_s3_object.delta_upsert.id
+      DATA_INSERT_KEY = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_insert.id}"
+      DATA_UPSERT_KEY = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_upsert.id}"
     }
   }
 
