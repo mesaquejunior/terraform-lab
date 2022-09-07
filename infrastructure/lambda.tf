@@ -12,12 +12,13 @@ resource "aws_lambda_function" "execute_emr" {
 
   environment {
     variables = {
-      LOGS_URI        = "s3://datalake-igti-mesaque/emr-logs"
-      JOB_FLOW_ROLE   = "EMR_EC2_DefaultRole"
-      SERVICE_ROLE    = "EMR_DefaultRole"
-      CLUSTER_NAME    = "${var.base_cluster_name}-${var.enviroment}-${var.region}-${var.account_name}"
-      DATA_INSERT_KEY = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_insert.id}"
-      DATA_UPSERT_KEY = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_upsert.id}"
+      LOGS_URI          = "s3://datalake-igti-mesaque/emr-logs"
+      JOB_FLOW_ROLE     = "EMR_EC2_DefaultRole"
+      SERVICE_ROLE      = "EMR_DefaultRole"
+      AUTO_SCALING_ROLE = "EMR_AutoScaling_DefaultRole"
+      CLUSTER_NAME      = "${var.base_cluster_name}-${var.enviroment}-${var.region}-${var.account_name}"
+      DATA_INSERT_KEY   = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_insert.id}"
+      DATA_UPSERT_KEY   = "s3://${aws_s3_bucket.data_lake.id}/${aws_s3_object.delta_upsert.id}"
     }
   }
 

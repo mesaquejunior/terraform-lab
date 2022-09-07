@@ -1,5 +1,7 @@
 # EMR Default Roles
 # https://awscli.amazonaws.com/v2/documentation/api/latest/reference/emr/create-default-roles.html
+# Create role AWSServiceRoleForEMRCleanup
+
 resource "aws_iam_role" "lambda" {
   name               = "${var.base_lambda_name}-role-${var.enviroment}"
   assume_role_policy = <<EOF
@@ -57,8 +59,8 @@ resource "aws_iam_policy" "lambda" {
         },
         {
           "Action": "iam:PassRole",
-          "Resource": ["arn:aws:iam::127012818163:role/EMR_DefaultRole",
-                       "arn:aws:iam::127012818163:role/EMR_EC2_DefaultRole"],
+          "Resource": ["arn:aws:iam::263705825298:role/EMR_DefaultRole",
+                       "arn:aws:iam::263705825298:role/EMR_EC2_DefaultRole"],
           "Effect": "Allow"
         }
     ]
